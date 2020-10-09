@@ -18,7 +18,7 @@ export async function getHNTopItems(duration: Duration): Promise<NewsItem[]> {
     );
     return transformToNewsItems(response.data);
   } catch (e) {
-    console.error("Exception while fetching data from HN Algolia API", e);
+    console.error("Error while fetching data from HN Algolia API", e);
     return [];
   }
 }

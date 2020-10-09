@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:debug": "set NODE_OPTIONS=--inspect && next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.22",
     "axios": "^0.20.0",
     "cheerio": "^1.0.0-rc.3",
     "date-fns": "^2.16.1",

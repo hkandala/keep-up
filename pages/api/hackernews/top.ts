@@ -2,27 +2,10 @@ import { NowRequest, NowRequestQuery, NowResponse } from "@vercel/node";
 
 import { getHNTopItems } from "../../../lib/hackernews/hn-algolia.parser";
 import { Duration } from "../../../lib/types/duration.enum";
-import { NewsItem } from "../../../lib/types/news-item.interface";
+import { sendResponse } from "../../../lib/util/api.util";
 
 export default async function (req: NowRequest, res: NowResponse) {
-  let response: NewsItem[];
-  let error = false;
-  try {
-    response = await getHNTopItems(getDurationFromQuery(req.query));
-    if (!response?.length) {
-      throw new Error("Parser returned empty response");
-    }
-  } catch (e) {
-    console.error("Exception while fetching data from parsers", e);
-    error = true;
-  }
-
-  if (!error) {
-    res.json(response);
-  } else {
-    res.status(500);
-    res.json([]);
-  }
+  sendResponse(await getHNTopItems(getDurationFromQuery(req.query)), res);
 }
 
 function getDurationFromQuery(query: NowRequestQuery): Duration {
