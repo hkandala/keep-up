@@ -55,15 +55,17 @@ async function fetchResponse(
 
 function transformToNewsItems(resp: any): NewsItem[] {
   if (resp?.data?.children) {
-    return resp.data.children.map((item) => {
-      return {
-        title: item.data.title,
-        url: item.data.url,
-        alternativeUrl: REDDIT_HOME + item.data.permalink,
-        description: item.data.selftext,
-        score: item.data.score,
-      } as NewsItem;
-    });
+    return resp.data.children
+      .filter((item) => !item.data.stickied)
+      .map((item) => {
+        return {
+          title: item.data.title,
+          url: item.data.url,
+          alternativeUrl: REDDIT_HOME + item.data.permalink,
+          description: item.data.selftext,
+          score: item.data.score,
+        } as NewsItem;
+      });
   }
   return [];
 }
