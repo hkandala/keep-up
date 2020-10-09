@@ -23,7 +23,11 @@ export default function (req: NowRequest, res: NowResponse) {
       url: "/api/hackernews/new",
     },
     {
-      type: "Top (Today)",
+      type: "Top (Last Hour)",
+      url: "/api/hackernews/top?duration=hour",
+    },
+    {
+      type: "Top (Last 24 Hours)",
       url: "/api/hackernews/top?duration=day",
     },
     {

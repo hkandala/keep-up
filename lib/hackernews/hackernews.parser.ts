@@ -9,23 +9,23 @@ const HACKERNEWS_SHOW = "https://news.ycombinator.com/show";
 const HACKERNEWS_SHOWNEW = "https://news.ycombinator.com/shownew";
 const HACKERNEWS_NEW = "https://news.ycombinator.com/newest";
 
-export async function getHNTrendingItems() {
+export async function getHNTrendingItems(): Promise<NewsItem[]> {
   return fetchResponse(HACKERNEWS_HOME);
 }
 
-export async function getAskHNItems() {
+export async function getAskHNItems(): Promise<NewsItem[]> {
   return fetchResponse(HACKERNEWS_ASK);
 }
 
-export async function getShowHNItems() {
+export async function getShowHNItems(): Promise<NewsItem[]> {
   return fetchResponse(HACKERNEWS_SHOW);
 }
 
-export async function getShowHNNewItems() {
+export async function getShowHNNewItems(): Promise<NewsItem[]> {
   return fetchResponse(HACKERNEWS_SHOWNEW);
 }
 
-export async function getHNNewItems() {
+export async function getHNNewItems(): Promise<NewsItem[]> {
   return fetchResponse(HACKERNEWS_NEW);
 }
 

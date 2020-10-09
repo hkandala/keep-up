@@ -9,6 +9,7 @@ const ALGOLIA_APPLICATION_ID = "UJ5WYC0L7X";
 const ALGOLIA_API_URL = `https://uj5wyc0l7x-dsn.algolia.net/1/indexes/Item_production_ordered/query?x-algolia-api-key=${ALGOLIA_API_KEY}&x-algolia-application-id=${ALGOLIA_APPLICATION_ID}`;
 
 const HACKERNEWS_COMMENT_URL_PREFIX = "https://news.ycombinator.com/item?id=";
+const ITEM_COUNT = 30;
 
 export async function getHNTopItems(duration: Duration): Promise<NewsItem[]> {
   try {
@@ -43,12 +44,17 @@ function getHNCommmentsUrl(itemId: string): string {
 
 function getAlgoliaRequestPayload(duration: Duration): any {
   const page = 0;
-  const hitsPerPage = 30;
+  const hitsPerPage = ITEM_COUNT;
   const tagFilters = ["story", []];
   const getRankingInfo = false;
 
   let numericFilters;
   switch (duration) {
+    case Duration.HOUR:
+      numericFilters = [
+        `created_at_i>${getTime(sub(new Date(), { hours: 1 })) / 1000}`,
+      ];
+      break;
     case Duration.DAY:
       numericFilters = [
         `created_at_i>${getTime(sub(new Date(), { days: 1 })) / 1000}`,
@@ -69,7 +75,7 @@ function getAlgoliaRequestPayload(duration: Duration): any {
         `created_at_i>${getTime(sub(new Date(), { years: 1 })) / 1000}`,
       ];
       break;
-    default:
+    case Duration.ALL:
       numericFilters = [];
   }
 
