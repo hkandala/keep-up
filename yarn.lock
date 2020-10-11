@@ -1021,6 +1021,11 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@geist-ui/react-icons@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@geist-ui/react-icons/-/react-icons-1.0.0.tgz#2b08f155a0d57549eb8456143e5d51b71b0a11f1"
+  integrity sha512-6mNGTLu+EDcyDmf2BLMqKbne3bNX9wbHl4YTSj4nVy4GaMvC8IAIXpxfhdTBBHiTZ1Bm3+9PxQqtyvJvYl0WXQ==
+
 "@geist-ui/react@^2.1.0-canary.0":
   version "2.1.0-canary.0"
   resolved "https://registry.yarnpkg.com/@geist-ui/react/-/react-2.1.0-canary.0.tgz#85cfd1f74b2ce15449ee4be59af315e733667d18"
