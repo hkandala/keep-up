@@ -38,39 +38,42 @@ export default function FeedCard(props) {
     const itemCount = data.items.length;
     feedContent = data.items.map((item, index) => (
       <>
-        <div
-          style={{
-            display: "inline-block",
-            width: 60,
-            textAlign: "center",
-          }}
-        >
-          <Badge>{item.score}</Badge>
+        <div style={{ display: "flex" }}>
+          <div style={{ width: 60, textAlign: "center" }}>
+            <Badge>{item.score}</Badge>
+          </div>
+          <div
+            style={{
+              width:
+                item.alternativeUrl != undefined
+                  ? "calc(100% - 100px)"
+                  : "calc(100% - 60px)",
+            }}
+          >
+            <Link href={item.url} underline target="_blank" title={item.title}>
+              {item.title}
+            </Link>
+            {item.description != undefined && item.description != "" ? (
+              <>
+                <Divider y={0.5} />
+                <Text small style={{ fontWeight: 300 }}>
+                  {item.description}
+                </Text>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          {item.alternativeUrl != undefined ? (
+            <div style={{ width: 40, textAlign: "right" }}>
+              <Link href={item.alternativeUrl} target="_blank">
+                <MessageSquare />
+              </Link>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
-        <Link
-          href={item.url}
-          underline
-          target="_blank"
-          title={item.title}
-          style={{
-            display: "inline-block",
-            width: "calc(100% - 100px)",
-            marginRight: 10,
-            verticalAlign: "middle",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-          }}
-        >
-          {item.title}
-        </Link>
-        <Link
-          href={item.alternativeUrl}
-          target="_blank"
-          style={{ verticalAlign: "middle" }}
-        >
-          <MessageSquare />
-        </Link>
         {index + 1 < itemCount ? <Divider /> : <></>}
       </>
     ));
@@ -89,7 +92,9 @@ export default function FeedCard(props) {
         </Text>
       </Card.Content>
       <Divider y={0} />
-      <Card.Content style={{ height: 680, overflowY: "scroll" }}>
+      <Card.Content
+        style={{ height: 500, overflowX: "hidden", overflowY: "scroll" }}
+      >
         {feedContent}
       </Card.Content>
     </Card>
