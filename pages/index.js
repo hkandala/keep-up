@@ -11,7 +11,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Text h1 style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
+      <Text
+        h1
+        style={{
+          fontFamily: "'Sansita Swashed', cursive",
+          textAlign: "center",
+          marginTop: 20,
+          marginBottom: 40,
+        }}
+      >
         keepup
       </Text>
 

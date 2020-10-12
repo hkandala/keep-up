@@ -49,6 +49,7 @@ export default function FeedCard(props) {
         </div>
         <Link
           href={item.url}
+          underline
           target="_blank"
           title={item.title}
           style={{
@@ -76,9 +77,16 @@ export default function FeedCard(props) {
   }
 
   return (
-    <Card shadow>
+    <Card
+      shadow
+      style={{
+        fontFamily: "'Roboto Slab', serif",
+      }}
+    >
       <Card.Content>
-        <Text b>{props.title}</Text>
+        <Text h4 style={{ fontWeight: 700 }}>
+          {props.title}
+        </Text>
       </Card.Content>
       <Divider y={0} />
       <Card.Content style={{ height: 680, overflowY: "scroll" }}>
