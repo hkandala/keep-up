@@ -17,14 +17,14 @@ function MyApp({ Component, pageProps }) {
     <GeistProvider theme={{ type: themeType }}>
       <CssBaseline />
 
-      <div style={{ marginTop: 25, marginRight: 25, textAlign: "right" }}>
-        <Sun />
+      <div className="theme-toggle-wrapper">
+        <Sun size={20} className="theme-icon" />
         <Toggle
           onChange={switchThemes}
           initialChecked={defaultTheme == "dark"}
-          style={{ marginLeft: 10, marginRight: 10 }}
+          className="theme-toggle"
         />
-        <Moon />
+        <Moon size={20} className="theme-icon" />
       </div>
 
       <Component {...pageProps} />

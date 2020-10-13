@@ -1,62 +1,52 @@
+import { useEffect, useState } from "react";
+import SimpleBar from "simplebar-react";
 import { Badge, Card, Divider, Link, Spinner, Text } from "@geist-ui/react";
 import { MessageSquare } from "@geist-ui/react-icons";
-import { useEffect, useState } from "react";
+import { RefreshCcw } from "@geist-ui/react-icons";
 
 export default function FeedCard(props) {
-  const [data, setItems] = useState({ items: [], isFetching: false });
+  const [items, setItems] = useState({ feedItems: [], isFetching: false });
 
   useEffect(() => {
-    (async () => {
-      try {
-        setItems({ items: data.items, isFetching: true });
-        const response = await fetch(props.url);
-        const responseJson = await response.json();
-        setItems({ items: responseJson, isFetching: false });
-      } catch (e) {
-        console.log(e);
-        setItems({ items: data.users, isFetching: false });
-      }
-    })();
+    fetchItems(props.url, setItems);
   }, []);
 
   let feedContent;
+  const itemCount = items.feedItems.length;
 
-  if (data.isFetching) {
+  if (items.isFetching) {
     feedContent = (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-        }}
-      >
+      <div className="spinner-wrapper center">
         <Spinner size="large" />
       </div>
     );
+  } else if (items.feedItems.length == 0) {
+    feedContent = (
+      <div className="error-wrapper center">
+        <Text b>Uh oh, something wrong happened :(</Text>
+      </div>
+    );
   } else {
-    const itemCount = data.items.length;
-    feedContent = data.items.map((item, index) => (
+    feedContent = items.feedItems.map((item, index) => (
       <>
-        <div style={{ display: "flex" }}>
-          <div style={{ width: 60, textAlign: "center" }}>
-            <Badge>{item.score}</Badge>
+        <div className="list-item">
+          <div className="badge-wrapper">
+            <Badge size="small">{item.score}</Badge>
           </div>
           <div
-            style={{
-              width:
-                item.alternativeUrl != undefined
-                  ? "calc(100% - 100px)"
-                  : "calc(100% - 60px)",
-            }}
+            className={
+              item.alternativeUrl != undefined
+                ? "link-content-with-discussion"
+                : "link-content"
+            }
           >
-            <Link href={item.url} underline target="_blank" title={item.title}>
-              {item.title}
+            <Link href={item.url} underline title={item.title} target="_blank">
+              <Text small>{item.title}</Text>
             </Link>
             {item.description != undefined && item.description != "" ? (
               <>
                 <Divider y={0.5} />
-                <Text small style={{ fontWeight: 300 }}>
+                <Text small className="description">
                   {item.description}
                 </Text>
               </>
@@ -65,38 +55,49 @@ export default function FeedCard(props) {
             )}
           </div>
           {item.alternativeUrl != undefined ? (
-            <div style={{ width: 40, textAlign: "right" }}>
+            <div className="discussion-link-wrapper">
               <Link href={item.alternativeUrl} target="_blank">
-                <MessageSquare />
+                <MessageSquare size={20} />
               </Link>
             </div>
           ) : (
             <></>
           )}
         </div>
-        {index + 1 < itemCount ? <Divider /> : <></>}
+        {index + 1 < itemCount ? <Divider y={1.5} /> : <></>}
       </>
     ));
   }
 
   return (
-    <Card
-      shadow
-      style={{
-        fontFamily: "'Roboto Slab', serif",
-      }}
-    >
-      <Card.Content>
-        <Text h4 style={{ fontWeight: 700 }}>
-          {props.title}
-        </Text>
+    <Card shadow className="card">
+      <Card.Content className="feed-header-wrapper">
+        <Text h4>{props.title}</Text>
+        <div
+          onClick={async () => {
+            await fetchItems(props.url, setItems);
+          }}
+          className="feed-refresh"
+        >
+          <RefreshCcw size={16} />
+        </div>
       </Card.Content>
       <Divider y={0} />
-      <Card.Content
-        style={{ height: 500, overflowX: "hidden", overflowY: "scroll" }}
-      >
-        {feedContent}
-      </Card.Content>
+      <SimpleBar className="list-wrapper">
+        <Card.Content>{feedContent}</Card.Content>
+      </SimpleBar>
     </Card>
   );
+}
+
+async function fetchItems(url, setItems) {
+  try {
+    setItems({ feedItems: [], isFetching: true });
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    setItems({ feedItems: responseJson, isFetching: false });
+  } catch (e) {
+    console.log(e);
+    setItems({ feedItems: [], isFetching: false });
+  }
 }

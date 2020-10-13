@@ -1,2 +1,133 @@
 @import "https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@800&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap";
+
+@import "~simplebar/dist/simplebar.min.css";
+
+.simplebar-content-wrapper {
+  scroll-snap-type: x mandatory;
+}
+
+.simplebar-scrollbar::before {
+  background-color: #50e3c2;
+}
+
+.theme-toggle-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-toggle-wrapper .theme-toggle {
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.theme-toggle-wrapper .theme-icon {
+  vertical-align: middle;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: inline-block;
+  font-family: "Sansita Swashed", cursive;
+  border-bottom: 10px solid #79ffe1;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.feed-wrapper {
+  display: flex;
+}
+
+.feed-wrapper .feed-item {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 20px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 900px) {
+  .feed-wrapper .feed-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .feed-wrapper .feed-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+.card h4,
+.card p,
+.card small,
+.card b,
+.card span {
+  font-family: "Roboto Slab", serif !important;
+}
+
+.card h4 {
+  font-weight: 700;
+}
+
+.card .description {
+  font-weight: 300;
+}
+
+.feed-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feed-header-wrapper h4 {
+  margin-bottom: 0;
+}
+
+.feed-header-wrapper .feed-refresh {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.list-wrapper {
+  height: calc(100vh - 290px);
+}
+
+.list-wrapper .spinner-wrapper {
+  height: calc(100vh - 333px);
+}
+
+.list-wrapper .error-wrapper {
+  height: calc(100vh - 333px);
+}
+
+.list-wrapper .list-item {
+  display: flex;
+}
+
+.list-item .badge-wrapper {
+  width: 45px;
+  margin-right: 15px;
+  text-align: right;
+}
+
+.list-item .link-content {
+  width: calc(100% - 60px);
+}
+
+.list-item .link-content-with-discussion {
+  width: calc(100% - 90px);
+}
+
+.list-item .discussion-link-wrapper {
+  width: 30px;
+  text-align: right;
+}
