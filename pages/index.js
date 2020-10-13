@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import SimpleBar from "simplebar-react";
 import { Text, useToasts } from "@geist-ui/react";
 
 import FeedCard from "../components/FeedCard";
-import { useEffect } from "react";
 
 export default function Home() {
   const [toasts, setToast] = useToasts();
