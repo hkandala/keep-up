@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SimpleBar from "simplebar-react";
+import ClampLines from "react-clamp-lines";
 import { Badge, Card, Divider, Link, Spinner, Text } from "@geist-ui/react";
 import { MessageSquare } from "@geist-ui/react-icons";
 import { RefreshCcw } from "@geist-ui/react-icons";
@@ -58,9 +59,7 @@ export default function FeedCard(props) {
             {item.description != undefined && item.description != "" ? (
               <>
                 <Divider y={0.5} />
-                <Text small className="description">
-                  {item.description}
-                </Text>
+                <ClampLines text={item.description} className="description" />
               </>
             ) : (
               <></>

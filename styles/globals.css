@@ -11,6 +11,19 @@
   background-color: #50e3c2;
 }
 
+.toggle.checked {
+  background-color: #79ffe1 !important;
+}
+
+.clamp-lines__button {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .theme-toggle-wrapper {
   position: absolute;
   top: 20px;
@@ -66,7 +79,11 @@
 }
 
 .card .description {
+  font-family: "Roboto Slab", serif !important;
+  font-size: 0.875rem;
   font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .feed-header-wrapper {
@@ -85,6 +102,7 @@
 
 .list-wrapper {
   height: calc(100vh - 290px);
+  overflow-x: hidden;
 }
 
 .list-wrapper .spinner-wrapper {
