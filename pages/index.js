@@ -12,6 +12,7 @@ export default function Home() {
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
       ReactGA.initialize("UA-176784721-2");
+      ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     if (window.innerWidth < 1280) {
