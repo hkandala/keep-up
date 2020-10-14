@@ -13,7 +13,7 @@ export default function Home() {
       setToast({ text: "Try scrolling this way 👉", delay: 5000 });
       window.localStorage.setItem("scroll-notification", true);
     }
-  });
+  }, []);
 
   return (
     <>
