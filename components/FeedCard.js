@@ -7,9 +7,19 @@ import { RefreshCcw } from "@geist-ui/react-icons";
 export default function FeedCard(props) {
   const [items, setItems] = useState({ feedItems: [], isFetching: false });
 
-  useEffect(() => {
-    fetchItems(props.url, setItems);
-  }, []);
+  const fetchItems = async () => {
+    try {
+      setItems({ feedItems: [], isFetching: true });
+      const response = await fetch(props.url);
+      const responseJson = await response.json();
+      setItems({ feedItems: responseJson, isFetching: false });
+    } catch (e) {
+      console.log(e);
+      setItems({ feedItems: [], isFetching: false });
+    }
+  };
+
+  useEffect(() => fetchItems(), []);
 
   let feedContent;
   const itemCount = items.feedItems.length;
@@ -73,12 +83,7 @@ export default function FeedCard(props) {
     <Card shadow className="card">
       <Card.Content className="feed-header-wrapper">
         <Text h4>{props.title}</Text>
-        <div
-          onClick={async () => {
-            await fetchItems(props.url, setItems);
-          }}
-          className="feed-refresh"
-        >
+        <div onClick={async () => await fetchItems()} className="feed-refresh">
           <RefreshCcw size={16} />
         </div>
       </Card.Content>
@@ -88,16 +93,4 @@ export default function FeedCard(props) {
       </SimpleBar>
     </Card>
   );
-}
-
-async function fetchItems(url, setItems) {
-  try {
-    setItems({ feedItems: [], isFetching: true });
-    const response = await fetch(url);
-    const responseJson = await response.json();
-    setItems({ feedItems: responseJson, isFetching: false });
-  } catch (e) {
-    console.log(e);
-    setItems({ feedItems: [], isFetching: false });
-  }
 }

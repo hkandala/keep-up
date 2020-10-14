@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 1);
     if (window.localStorage.getItem("theme") == "dark") {
       switchThemes();
     }

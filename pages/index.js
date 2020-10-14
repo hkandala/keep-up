@@ -8,12 +8,22 @@ import FeedCard from "../components/FeedCard";
 export default function Home() {
   const [toasts, setToast] = useToasts();
   useEffect(() => {
-    const status = window.localStorage.getItem("scroll-notification");
-    if (!status) {
-      setToast({ text: "Try scrolling this way 👉", delay: 5000 });
-      window.localStorage.setItem("scroll-notification", true);
+    if (window.innerWidth < 1280) {
+      const status = window.localStorage.getItem("scroll-notification");
+      if (!status) {
+        setToast({ text: "Try scrolling this way 👉", delay: 10000 });
+        window.localStorage.setItem("scroll-notification", true);
+      }
     }
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 0);
+    });
+  });
 
   return (
     <>
