@@ -7,13 +7,13 @@ import { Text, useToasts } from "@geist-ui/react";
 import FeedCard from "../components/FeedCard";
 
 export default function Home() {
-  if (window.location.hostname !== "localhost") {
-    ReactGA.initialize("UA-176784721-2");
-  }
-
   const [toasts, setToast] = useToasts();
 
   useEffect(() => {
+    if (window.location.hostname !== "localhost") {
+      ReactGA.initialize("UA-176784721-2");
+    }
+
     if (window.innerWidth < 1280) {
       const status = window.localStorage.getItem("scroll-notification");
       if (!status) {
