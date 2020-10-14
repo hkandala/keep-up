@@ -7,6 +7,7 @@ import FeedCard from "../components/FeedCard";
 
 export default function Home() {
   const [toasts, setToast] = useToasts();
+
   useEffect(() => {
     if (window.innerWidth < 1280) {
       const status = window.localStorage.getItem("scroll-notification");
@@ -16,14 +17,6 @@ export default function Home() {
       }
     }
   }, []);
-
-  useEffect(() => {
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        window.scrollTo(0, 1);
-      }, 0);
-    });
-  });
 
   return (
     <>
@@ -40,41 +33,42 @@ export default function Home() {
 
       <SimpleBar autoHide={false}>
         <div className="feed-wrapper">
-          <div className="feed-item">
-            <FeedCard
-              title="Hacker News"
-              url="/api/hackernews/trending"
-            ></FeedCard>
-          </div>
-          <div className="feed-item">
-            <FeedCard title="Dev.to" url="/api/dev/featured"></FeedCard>
-          </div>
-          <div className="feed-item">
-            <FeedCard
-              title="r/programming"
-              url="/api/reddit/hot?subreddit=programming"
-            ></FeedCard>
-          </div>
-          <div className="feed-item">
-            <FeedCard
-              title="r/javascript"
-              url="/api/reddit/hot?subreddit=javascript"
-            ></FeedCard>
-          </div>
-          <div className="feed-item">
-            <FeedCard
-              title="r/java"
-              url="/api/reddit/hot?subreddit=java"
-            ></FeedCard>
-          </div>
-          <div className="feed-item">
-            <FeedCard
-              title="r/machinelearning"
-              url="/api/reddit/hot?subreddit=machinelearning"
-            ></FeedCard>
-          </div>
+          {getFeedListData().map((item) => (
+            <div className="feed-item" key={item.title}>
+              <FeedCard {...item}></FeedCard>
+            </div>
+          ))}
         </div>
       </SimpleBar>
     </>
   );
+}
+
+function getFeedListData() {
+  return [
+    {
+      title: "Hacker News",
+      url: "/api/hackernews/trending",
+    },
+    {
+      title: "Dev.to",
+      url: "/api/dev/featured",
+    },
+    {
+      title: "r/programming",
+      url: "/api/reddit/hot?subreddit=programming",
+    },
+    {
+      title: "r/javascript",
+      url: "/api/reddit/hot?subreddit=javascript",
+    },
+    {
+      title: "r/java",
+      url: "/api/reddit/hot?subreddit=java",
+    },
+    {
+      title: "r/machinelearning",
+      url: "/api/reddit/hot?subreddit=machinelearning",
+    },
+  ];
 }

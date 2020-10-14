@@ -19,7 +19,9 @@ export default function FeedCard(props) {
     }
   };
 
-  useEffect(() => fetchItems(), []);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   let feedContent;
   const itemCount = items.feedItems.length;
@@ -38,7 +40,7 @@ export default function FeedCard(props) {
     );
   } else {
     feedContent = items.feedItems.map((item, index) => (
-      <>
+      <React.Fragment key={index}>
         <div className="list-item">
           <div className="badge-wrapper">
             <Badge size="small">{item.score}</Badge>
@@ -75,7 +77,7 @@ export default function FeedCard(props) {
           )}
         </div>
         {index + 1 < itemCount ? <Divider y={1.5} /> : <></>}
-      </>
+      </React.Fragment>
     ));
   }
 
