@@ -53,20 +53,6 @@
   scroll-snap-align: start;
 }
 
-@media (min-width: 900px) {
-  .feed-wrapper .feed-item {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
-@media (min-width: 1280px) {
-  .feed-wrapper .feed-item {
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-  }
-}
-
 .card h4,
 .card p,
 .card small,
@@ -130,4 +116,22 @@
 .list-item .discussion-link-wrapper {
   width: 30px;
   text-align: right;
+}
+
+@media (min-width: 900px) {
+  .feed-wrapper .feed-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .feed-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .feed-wrapper .feed-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
 }

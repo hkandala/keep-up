@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GeistProvider, CssBaseline, Toggle } from "@geist-ui/react";
 import { Moon, Sun } from "@geist-ui/react-icons";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const defaultTheme = "light";
-  const [themeType, setThemeType] = useState(defaultTheme);
+  const [themeType, setThemeType] = useState("light");
+
   const switchThemes = () => {
-    setThemeType((lastThemeType) =>
-      lastThemeType === "dark" ? "light" : "dark"
-    );
+    setThemeType((lastThemeType) => {
+      const newThemeType = lastThemeType === "dark" ? "light" : "dark";
+      window.localStorage.setItem("theme", newThemeType);
+      return newThemeType;
+    });
   };
+
+  useEffect(() => {
+    if (window.localStorage.getItem("theme") == "dark") {
+      switchThemes();
+    }
+  }, []);
 
   return (
     <GeistProvider theme={{ type: themeType }}>
@@ -21,7 +29,7 @@ function MyApp({ Component, pageProps }) {
         <Sun size={20} className="theme-icon" />
         <Toggle
           onChange={switchThemes}
-          initialChecked={defaultTheme == "dark"}
+          checked={themeType == "dark"}
           className="theme-toggle"
         />
         <Moon size={20} className="theme-icon" />

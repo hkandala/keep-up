@@ -47,6 +47,18 @@ export default function Home() {
           </div>
           <div className="feed-item">
             <FeedCard
+              title="r/javascript"
+              url="/api/reddit/hot?subreddit=javascript"
+            ></FeedCard>
+          </div>
+          <div className="feed-item">
+            <FeedCard
+              title="r/java"
+              url="/api/reddit/hot?subreddit=java"
+            ></FeedCard>
+          </div>
+          <div className="feed-item">
+            <FeedCard
               title="r/machinelearning"
               url="/api/reddit/hot?subreddit=machinelearning"
             ></FeedCard>
