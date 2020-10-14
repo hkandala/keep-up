@@ -1,11 +1,16 @@
 import { useEffect } from "react";
 import Head from "next/head";
+import ReactGA from "react-ga";
 import SimpleBar from "simplebar-react";
 import { Text, useToasts } from "@geist-ui/react";
 
 import FeedCard from "../components/FeedCard";
 
 export default function Home() {
+  if (window.location.hostname !== "localhost") {
+    ReactGA.initialize("UA-176784721-2");
+  }
+
   const [toasts, setToast] = useToasts();
 
   useEffect(() => {
