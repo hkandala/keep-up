@@ -1,27 +1,35 @@
 import { useEffect, useState } from "react";
 import SimpleBar from "simplebar-react";
 import ClampLines from "react-clamp-lines";
-import { Badge, Card, Divider, Link, Spinner, Text } from "@geist-ui/react";
+import {
+  Badge,
+  Card,
+  Divider,
+  Link,
+  Select,
+  Spinner,
+  Text,
+} from "@geist-ui/react";
 import { MessageSquare } from "@geist-ui/react-icons";
-import { RefreshCcw } from "@geist-ui/react-icons";
 
 export default function FeedCard(props) {
+  const defaultType = 0;
   const [items, setItems] = useState({ feedItems: [], isFetching: false });
 
-  const fetchItems = async () => {
+  const fetchItems = async (type) => {
     try {
       setItems({ feedItems: [], isFetching: true });
-      const response = await fetch(props.url);
+      const response = await fetch(props.endpoints[Number(type)].url);
       const responseJson = await response.json();
       setItems({ feedItems: responseJson, isFetching: false });
     } catch (e) {
-      console.log(e);
+      console.error(e);
       setItems({ feedItems: [], isFetching: false });
     }
   };
 
   useEffect(() => {
-    fetchItems();
+    fetchItems(defaultType);
   }, []);
 
   let feedContent;
@@ -84,9 +92,18 @@ export default function FeedCard(props) {
     <Card shadow className="card">
       <Card.Content className="feed-header-wrapper">
         <Text h4>{props.title}</Text>
-        <div onClick={async () => await fetchItems()} className="feed-refresh">
-          <RefreshCcw size={16} />
-        </div>
+        <Select
+          initialValue={defaultType.toString()}
+          size="small"
+          width="8rem"
+          onChange={fetchItems}
+        >
+          {props.endpoints.map((endpoint, index) => (
+            <Select.Option value={index.toString()} key={index}>
+              {endpoint.type}
+            </Select.Option>
+          ))}
+        </Select>
       </Card.Content>
       <Divider y={0} />
       <SimpleBar className="list-wrapper">

@@ -1,4 +1,5 @@
 import { NowRequest, NowResponse } from "@vercel/node";
+import { Endpoint } from "../../../lib/types/endpoint.interface";
 
 export default function (req: NowRequest, res: NowResponse) {
   res.json([
@@ -62,5 +63,5 @@ export default function (req: NowRequest, res: NowResponse) {
       type: "Controversial (All Time)",
       url: "/api/reddit/controversial?subreddit={}&duration=all",
     },
-  ]);
+  ] as Endpoint[]);
 }

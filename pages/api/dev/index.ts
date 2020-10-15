@@ -1,4 +1,5 @@
 import { NowRequest, NowResponse } from "@vercel/node";
+import { Endpoint } from "../../../lib/types/endpoint.interface";
 
 export default function (req: NowRequest, res: NowResponse) {
   res.json([
@@ -34,5 +35,5 @@ export default function (req: NowRequest, res: NowResponse) {
       type: "Top (All Time)",
       url: "/api/dev/top?duration=all",
     },
-  ]);
+  ] as Endpoint[]);
 }

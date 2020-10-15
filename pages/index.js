@@ -6,7 +6,7 @@ import { Text, useToasts } from "@geist-ui/react";
 
 import FeedCard from "../components/FeedCard";
 
-export default function Home() {
+export default function Home(props) {
   const [toasts, setToast] = useToasts();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Home() {
 
       <SimpleBar autoHide={false}>
         <div className="feed-wrapper">
-          {getFeedListData().map((item) => (
+          {props.feed.map((item) => (
             <div className="feed-item" key={item.title}>
               <FeedCard {...item}></FeedCard>
             </div>
@@ -50,31 +50,58 @@ export default function Home() {
   );
 }
 
-function getFeedListData() {
-  return [
-    {
-      title: "Hacker News",
-      url: "/api/hackernews/trending",
+export async function getStaticProps(context) {
+  const host = "https://keepup.hkandala.dev";
+
+  const hnResponse = await fetch(host + "/api/hackernews");
+  const hnApiData = await hnResponse.json();
+
+  const devResponse = await fetch(host + "/api/dev");
+  const devApiData = await devResponse.json();
+
+  const redditResponse = await fetch(host + "/api/reddit");
+  const redditApiData = await redditResponse.json();
+
+  return {
+    props: {
+      feed: [
+        {
+          title: "Hacker News",
+          endpoints: hnApiData,
+        },
+        {
+          title: "Dev.to",
+          endpoints: devApiData,
+        },
+        {
+          title: "r/programming",
+          endpoints: getEndpointListFromSubType("programming", redditApiData),
+        },
+        {
+          title: "r/javascript",
+          endpoints: getEndpointListFromSubType("javascript", redditApiData),
+        },
+        {
+          title: "r/java",
+          endpoints: getEndpointListFromSubType("java", redditApiData),
+        },
+        {
+          title: "r/machinelearning",
+          endpoints: getEndpointListFromSubType(
+            "machinelearning",
+            redditApiData
+          ),
+        },
+      ],
     },
-    {
-      title: "Dev.to",
-      url: "/api/dev/featured",
-    },
-    {
-      title: "r/programming",
-      url: "/api/reddit/hot?subreddit=programming",
-    },
-    {
-      title: "r/javascript",
-      url: "/api/reddit/hot?subreddit=javascript",
-    },
-    {
-      title: "r/java",
-      url: "/api/reddit/hot?subreddit=java",
-    },
-    {
-      title: "r/machinelearning",
-      url: "/api/reddit/hot?subreddit=machinelearning",
-    },
-  ];
+  };
+}
+
+function getEndpointListFromSubType(subtype, endpointList) {
+  return endpointList.map((endpoint) => {
+    return {
+      type: endpoint.type,
+      url: endpoint.url.replace("{}", subtype),
+    };
+  });
 }

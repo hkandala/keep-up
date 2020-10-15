@@ -15,6 +15,10 @@
   background-color: #79ffe1 !important;
 }
 
+.select-dropdown {
+  font-family: "Roboto Slab", serif !important;
+}
+
 .clamp-lines__button {
   background: transparent;
   border: none;
@@ -93,11 +97,6 @@
 
 .feed-header-wrapper h4 {
   margin-bottom: 0;
-}
-
-.feed-header-wrapper .feed-refresh {
-  margin-top: 5px;
-  cursor: pointer;
 }
 
 .list-wrapper {
