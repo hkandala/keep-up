@@ -24,11 +24,83 @@ export default function Home(props) {
     }
   }, []);
 
+  const metadata = {
+    title: "keepup: a place to keep up with daily tech trends",
+    description:
+      "A news aggregator app to stay up to date with daily tech trends",
+    keywords: "tech, news, trending, aggregator, feed",
+    theme: "#50e3c2",
+  };
+
   return (
     <>
       <Head>
-        <title>keepup</title>
+        {/* Common Meta Tags */}
+        <title>{metadata.title}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="screen-orientation" content="portrait" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+        />
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+
+        {/* Android Meta Tags*/}
+        <meta name="theme-color" content={metadata.theme} />
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        {/* iOS Meta Tags */}
+        <meta name="apple-mobile-web-app-title" content={metadata.title} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+        {/* Windows Meta Tags */}
+        <meta name="msapplication-navbutton-color" content={metadata.theme} />
+        <meta name="msapplication-TileColor" content={metadata.theme} />
+        <meta
+          name="msapplication-TileImage"
+          content="/icons/icon-192x192.png"
+        />
+
+        {/* Pinned Sites */}
+        <meta name="application-name" content={metadata.title} />
+        <meta name="msapplication-tooltip" content={metadata.description} />
+        <meta name="msapplication-starturl" content="/" />
+
+        {/* Tap Highlighting */}
+        <meta name="msapplication-tap-highlight" content="no" />
+
+        {/* UC Mobile Browser */}
+        <meta name="full-screen" content="yes" />
+        <meta name="browsermode" content="application" />
+
+        {/* Icon Links */}
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="/favicon-16x16.png"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          rel="icon"
+          href="/favicon-32x32.png"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          href="/icons/icon-192x192.png"
+          type="image/png"
+          sizes="192x192"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/icons/apple-touch-icon.png"
+          sizes="180x180"
+        />
       </Head>
 
       <div className="center">
