@@ -29,7 +29,7 @@ export default function Home(props) {
   const metadata = {
     title: "keepup",
     description: "A place to keep up with daily tech trends",
-    theme: "#50e3c2",
+    theme: "#ffffff",
   };
 
   return (
