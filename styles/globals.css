@@ -54,6 +54,10 @@
   border-bottom: 10px solid #79ffe1;
   margin-top: 60px;
   margin-bottom: 30px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .feed-wrapper {

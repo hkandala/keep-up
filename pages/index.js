@@ -14,7 +14,7 @@ export default function Home(props) {
     manifestFile: "manifest.webmanifest",
     theme: "#ffffff",
     lightStatusColor: "#ffffff",
-    darkStatusColor: "#000000",
+    darkStatusColor: "#333333",
     favicon: "/favicon.ico",
     favicon16: "/favicon-16x16.png",
     favicon32: "/favicon-32x32.png",

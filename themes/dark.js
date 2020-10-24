@@ -1,0 +1,27 @@
+export default {
+  type: "custom-dark",
+  palette: {
+    accents_1: "#444",
+    accents_2: "#444",
+    accents_3: "#444",
+    accents_4: "#666",
+    accents_5: "#888",
+    accents_6: "#999",
+    accents_7: "#eaeaea",
+    accents_8: "#fafafa",
+    background: "#333",
+    foreground: "#fff",
+    selection: "#79ffe1",
+    secondary: "#888",
+    code: "#79ffe1",
+    border: "#999",
+    link: "#3291ff",
+  },
+  expressiveness: {
+    dropdownBoxShadow: "0 0 0 1px #666",
+    shadowSmall: "0 0 0 1px #666",
+    shadowMedium: "0 0 0 1px #666",
+    shadowLarge: "0 0 0 1px #666",
+    portalOpacity: 0.75,
+  },
+};
