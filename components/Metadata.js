@@ -27,7 +27,7 @@ export default function Metadata(props) {
       <meta
         name="theme-color"
         content={
-          theme.type === "dark"
+          theme.type.includes("dark")
             ? metadata.darkStatusColor
             : metadata.lightStatusColor
         }
@@ -47,7 +47,7 @@ export default function Metadata(props) {
       <meta
         name="msapplication-navbutton-color"
         content={
-          theme.type === "dark"
+          theme.type.includes("dark")
             ? metadata.darkStatusColor
             : metadata.lightStatusColor
         }
