@@ -33,6 +33,9 @@ export default function Home(props) {
   return (
     <>
       <Head>
+        {/* Manifest Link */}
+        <link rel="manifest" href="manifest.webmanifest" />
+
         {/* Common Meta Tags */}
         <title>{metadata.title}</title>
         <meta charset="utf-8" />
