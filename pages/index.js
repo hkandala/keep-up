@@ -7,13 +7,29 @@ import { Text, useMediaQuery, useTheme, useToasts } from "@geist-ui/react";
 import FeedCard from "../components/FeedCard";
 
 export default function Home(props) {
+  const metadata = {
+    title: "keepup",
+    description: "A place to keep up with daily tech trends",
+    keywords: "news, feed, technology, trending, aggregator",
+    manifestFile: "manifest.webmanifest",
+    theme: "#ffffff",
+    lightStatusColor: "#ffffff",
+    darkStatusColor: "#000000",
+    favicon: "/favicon.ico",
+    favicon16: "/favicon-16x16.png",
+    favicon32: "/favicon-32x32.png",
+    icon192: "/icons/icon-192x192.png",
+    appleIcon: "/icons/apple-touch-icon.png",
+    gaId: "UA-176784721-2",
+  };
+
   const theme = useTheme();
   const isDesktop = useMediaQuery("md", { match: "up" });
   const [toasts, setToast] = useToasts();
 
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.initialize("UA-176784721-2");
+      ReactGA.initialize(metadata.gaId);
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
@@ -26,54 +42,53 @@ export default function Home(props) {
     }
   }, []);
 
-  const metadata = {
-    title: "keepup",
-    description: "A place to keep up with daily tech trends",
-    theme: "#ffffff",
-  };
-
   return (
     <>
       <Head>
         {/* Manifest Link */}
-        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="manifest" href={metadata.manifestFile} />
 
         {/* Common Meta Tags */}
-        <title>{metadata.title}</title>
         <meta charset="utf-8" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="screen-orientation" content="portrait" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
         />
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
 
         {/* Android Meta Tags*/}
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta
           name="theme-color"
-          content={theme.type === "dark" ? "#000" : "#fff"}
+          content={
+            theme.type === "dark"
+              ? metadata.darkStatusColor
+              : metadata.lightStatusColor
+          }
         />
-        <meta name="mobile-web-app-capable" content="yes" />
 
         {/* iOS Meta Tags */}
-        <meta name="apple-mobile-web-app-title" content={metadata.title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content={metadata.title} />
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
 
         {/* Windows Meta Tags */}
-        <meta
-          name="msapplication-navbutton-color"
-          content={theme.type === "dark" ? "#000" : "#fff"}
-        />
+        <meta name="msapplication-TileImage" content={metadata.icon192} />
         <meta name="msapplication-TileColor" content={metadata.theme} />
         <meta
-          name="msapplication-TileImage"
-          content="/icons/icon-192x192.png"
+          name="msapplication-navbutton-color"
+          content={
+            theme.type === "dark"
+              ? metadata.darkStatusColor
+              : metadata.lightStatusColor
+          }
         />
 
         {/* Pinned Sites */}
@@ -81,43 +96,43 @@ export default function Home(props) {
         <meta name="msapplication-tooltip" content={metadata.description} />
         <meta name="msapplication-starturl" content="/" />
 
-        {/* Tap Highlighting */}
-        <meta name="msapplication-tap-highlight" content="no" />
-
         {/* UC Mobile Browser */}
         <meta name="full-screen" content="yes" />
         <meta name="browsermode" content="application" />
 
+        {/* Tap Highlighting */}
+        <meta name="msapplication-tap-highlight" content="no" />
+
         {/* Icon Links */}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={metadata.favicon} />
         <link
           rel="icon"
-          href="/favicon-16x16.png"
+          href={metadata.favicon16}
           type="image/png"
           sizes="16x16"
         />
         <link
           rel="icon"
-          href="/favicon-32x32.png"
+          href={metadata.favicon32}
           type="image/png"
           sizes="32x32"
         />
         <link
           rel="icon"
-          href="/icons/icon-192x192.png"
+          href={metadata.icon192}
           type="image/png"
           sizes="192x192"
         />
         <link
           rel="apple-touch-icon"
-          href="/icons/apple-touch-icon.png"
+          href={metadata.appleIcon}
           sizes="180x180"
         />
       </Head>
 
       <div className="center">
         <Text h1 className="title">
-          keepup
+          {metadata.title}
         </Text>
       </div>
 

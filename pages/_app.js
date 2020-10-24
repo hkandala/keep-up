@@ -16,7 +16,17 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    if (window.localStorage.getItem("theme") == "dark") {
+    let isSystemDarkMode = false;
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      isSystemDarkMode = true;
+    }
+
+    const storedTheme = window.localStorage.getItem("theme");
+
+    if ((!storedTheme && isSystemDarkMode) || storedTheme == "dark") {
       switchThemes();
     }
   }, []);
