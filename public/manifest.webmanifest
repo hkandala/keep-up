@@ -4,7 +4,7 @@
   "description": "A place to keep up with daily tech trends",
   "theme_color": "#50e3c2",
   "background_color": "#ffffff",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
