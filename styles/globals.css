@@ -94,16 +94,20 @@
 
 .feed-header-wrapper {
   display: flex;
-  justify-content: space-between;
 }
 
 .feed-header-wrapper h4 {
   margin-bottom: 0;
+  margin-right: 15px;
 }
 
 .list-wrapper {
   height: calc(100vh - 290px);
   overflow-x: hidden;
+}
+
+.list-wrapper .content {
+  padding: 16pt 8pt !important;
 }
 
 .list-wrapper .spinner-wrapper {

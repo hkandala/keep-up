@@ -95,8 +95,8 @@ export default function FeedCard(props) {
         <Select
           initialValue={defaultType.toString()}
           size="small"
-          width="8rem"
           onChange={fetchItems}
+          disableMatchWidth
         >
           {props.endpoints.map((endpoint, index) => (
             <Select.Option value={index.toString()} key={index}>
