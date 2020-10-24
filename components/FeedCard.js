@@ -52,7 +52,9 @@ export default function FeedCard(props) {
       <React.Fragment key={index}>
         <div className="list-item">
           <div className="badge-wrapper">
-            <Badge size="small">{item.score}</Badge>
+            <a href={item.url} target="_blank">
+              <Badge size="small">{item.score}</Badge>
+            </a>
           </div>
           <div
             className={

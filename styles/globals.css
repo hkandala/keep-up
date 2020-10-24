@@ -90,6 +90,7 @@
   font-weight: 300;
   line-height: 1.5;
   margin: 0;
+  color: #888;
 }
 
 .feed-header-wrapper {
@@ -139,6 +140,14 @@
 .list-item .discussion-link-wrapper {
   width: 30px;
   text-align: right;
+}
+
+.list-item .badge-wrapper a:visited span {
+  background-color: #999;
+}
+
+.list-item a:visited small {
+  color: #888;
 }
 
 @media (min-width: 900px) {
