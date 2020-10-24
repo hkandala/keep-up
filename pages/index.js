@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import Head from "next/head";
 import ReactGA from "react-ga";
 import SimpleBar from "simplebar-react";
-import { Text, useToasts } from "@geist-ui/react";
+import { Text, useMediaQuery, useTheme, useToasts } from "@geist-ui/react";
 
 import FeedCard from "../components/FeedCard";
 
 export default function Home(props) {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery("md", { match: "up" });
   const [toasts, setToast] = useToasts();
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function Home(props) {
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
-    if (window.innerWidth < 1280) {
+    if (!isDesktop) {
       const status = window.localStorage.getItem("scroll-notification");
       if (!status) {
         setToast({ text: "Try scrolling this way 👉", delay: 10000 });
@@ -49,16 +51,25 @@ export default function Home(props) {
         <meta name="keywords" content={metadata.keywords} />
 
         {/* Android Meta Tags*/}
-        <meta name="theme-color" content="#333" />
+        <meta
+          name="theme-color"
+          content={theme.type === "dark" ? "#000" : "#fff"}
+        />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* iOS Meta Tags */}
         <meta name="apple-mobile-web-app-title" content={metadata.title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
 
         {/* Windows Meta Tags */}
-        <meta name="msapplication-navbutton-color" content="#333" />
+        <meta
+          name="msapplication-navbutton-color"
+          content={theme.type === "dark" ? "#000" : "#fff"}
+        />
         <meta name="msapplication-TileColor" content={metadata.theme} />
         <meta
           name="msapplication-TileImage"
