@@ -1,7 +1,7 @@
 {
-  "name": "keepup: a place to keep up with daily tech trends",
+  "name": "keepup",
   "short_name": "keepup",
-  "description": "A news aggregator app to stay up to date with daily tech trends",
+  "description": "A place to keep up with daily tech trends",
   "theme_color": "#50e3c2",
   "background_color": "#ffffff",
   "display": "standalone",

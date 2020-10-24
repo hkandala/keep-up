@@ -25,10 +25,8 @@ export default function Home(props) {
   }, []);
 
   const metadata = {
-    title: "keepup: a place to keep up with daily tech trends",
-    description:
-      "A news aggregator app to stay up to date with daily tech trends",
-    keywords: "tech, news, trending, aggregator, feed",
+    title: "keepup",
+    description: "A place to keep up with daily tech trends",
     theme: "#50e3c2",
   };
 
