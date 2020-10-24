@@ -11,11 +11,11 @@ export default function Metadata(props) {
       <link rel="manifest" href={metadata.manifestFile} />
 
       {/* Common Meta Tags */}
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <title>{metadata.title}</title>
       <meta name="description" content={metadata.description} />
       <meta name="keywords" content={metadata.keywords} />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="screen-orientation" content="portrait" />
       <meta
         name="viewport"
