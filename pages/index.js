@@ -49,7 +49,7 @@ export default function Home(props) {
         <meta name="keywords" content={metadata.keywords} />
 
         {/* Android Meta Tags*/}
-        <meta name="theme-color" content={metadata.theme} />
+        <meta name="theme-color" content="#333" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* iOS Meta Tags */}
@@ -58,7 +58,7 @@ export default function Home(props) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         {/* Windows Meta Tags */}
-        <meta name="msapplication-navbutton-color" content={metadata.theme} />
+        <meta name="msapplication-navbutton-color" content="#333" />
         <meta name="msapplication-TileColor" content={metadata.theme} />
         <meta
           name="msapplication-TileImage"

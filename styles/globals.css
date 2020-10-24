@@ -1,6 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@800&display=swap";
-@import "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap";
-
+@import "./fonts.css";
 @import "~simplebar/dist/simplebar.min.css";
 
 .simplebar-content-wrapper {
@@ -52,7 +50,7 @@
 
 .title {
   display: inline-block;
-  font-family: "Sansita Swashed", cursive;
+  font-family: "Sansita Swashed", sans-serif;
   border-bottom: 10px solid #79ffe1;
   margin-top: 60px;
   margin-bottom: 30px;
