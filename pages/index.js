@@ -46,7 +46,7 @@ export default function Home(props) {
       <Metadata metadata={metadata} />
 
       <div className="center">
-        <Text h1 className="title">
+        <Text h3 className="title">
           {metadata.title}
         </Text>
       </div>

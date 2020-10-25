@@ -24,7 +24,7 @@
 
 .settings-icon {
   position: absolute;
-  top: 0;
+  top: 12px;
   right: 0;
   padding: 10px;
   margin: 10px;
@@ -44,9 +44,8 @@
 .title {
   display: inline-block;
   font-family: "Sansita Swashed", sans-serif;
-  border-bottom: 10px solid #79ffe1;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  border-bottom: 5px solid #79ffe1;
+  margin: 20px auto;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
