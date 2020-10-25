@@ -68,7 +68,7 @@
   box-sizing: border-box;
   flex: 0 0 100%;
   max-width: 100%;
-  padding: 20px;
+  padding: 15px;
   scroll-snap-align: start;
 }
 
@@ -103,7 +103,6 @@
 }
 
 .list-wrapper {
-  height: calc(100vh - 290px);
   overflow-x: hidden;
 }
 
@@ -111,16 +110,13 @@
   padding: 16pt 8pt !important;
 }
 
-.list-wrapper .spinner-wrapper {
-  height: calc(100vh - 333px);
-}
-
-.list-wrapper .error-wrapper {
-  height: calc(100vh - 333px);
-}
-
 .list-wrapper .list-item {
   display: flex;
+}
+
+.list-item a:hover {
+  text-decoration: underline !important;
+  text-decoration-color: #888 !important;
 }
 
 .list-item .badge-wrapper {
@@ -148,6 +144,10 @@
 
 .list-item a:visited small {
   color: #888;
+}
+
+.list-item .discussion-link-wrapper a:visited svg {
+  color: #888 !important;
 }
 
 @media (min-width: 900px) {

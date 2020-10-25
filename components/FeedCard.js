@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SimpleBar from "simplebar-react";
 import ClampLines from "react-clamp-lines";
+import { MessageSquare } from "@geist-ui/react-icons";
 import {
   Badge,
   Card,
@@ -9,8 +10,8 @@ import {
   Select,
   Spinner,
   Text,
+  useMediaQuery,
 } from "@geist-ui/react";
-import { MessageSquare } from "@geist-ui/react-icons";
 
 export default function FeedCard(props) {
   const defaultType = 0;
@@ -32,18 +33,34 @@ export default function FeedCard(props) {
     fetchItems(defaultType);
   }, []);
 
+  const isDesktop = useMediaQuery("md", { match: "up" });
+  const [height, setHeight] = useState({
+    list: "550px",
+    spinner: "507px",
+    error: "507px",
+  });
+  useEffect(() => {
+    if (!isDesktop && window.innerHeight) {
+      setHeight({
+        list: window.innerHeight - 280 + "px",
+        spinner: window.innerHeight - 323 + "px",
+        error: window.innerHeight - 323 + "px",
+      });
+    }
+  }, []);
+
   let feedContent;
   const itemCount = items.feedItems.length;
 
   if (items.isFetching) {
     feedContent = (
-      <div className="spinner-wrapper center">
+      <div className="center" style={{ height: height.spinner }}>
         <Spinner size="large" />
       </div>
     );
   } else if (items.feedItems.length == 0) {
     feedContent = (
-      <div className="error-wrapper center">
+      <div className="center" style={{ height: height.error }}>
         <Text b>Uh oh, something wrong happened :(</Text>
       </div>
     );
@@ -63,7 +80,7 @@ export default function FeedCard(props) {
                 : "link-content"
             }
           >
-            <Link href={item.url} underline title={item.title} target="_blank">
+            <Link href={item.url} title={item.title} target="_blank">
               <Text small>{item.title}</Text>
             </Link>
             {item.description != undefined && item.description != "" ? (
@@ -108,7 +125,7 @@ export default function FeedCard(props) {
         </Select>
       </Card.Content>
       <Divider y={0} />
-      <SimpleBar className="list-wrapper">
+      <SimpleBar className="list-wrapper" style={{ height: height.list }}>
         <Card.Content>{feedContent}</Card.Content>
       </SimpleBar>
     </Card>
