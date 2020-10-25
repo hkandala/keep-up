@@ -9,14 +9,6 @@
   background-color: #50e3c2;
 }
 
-.toggle.checked {
-  background-color: #79ffe1 !important;
-}
-
-.select-dropdown {
-  font-family: "Roboto Slab", serif !important;
-}
-
 .clamp-lines__button {
   background: transparent;
   border: none;
@@ -26,20 +18,21 @@
   text-decoration: underline;
 }
 
-.theme-toggle-wrapper {
+.select-dropdown {
+  font-family: "Roboto Slab", serif !important;
+}
+
+.settings-icon {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
 }
 
-.theme-toggle-wrapper .theme-toggle {
-  vertical-align: middle;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.theme-toggle-wrapper .theme-icon {
-  vertical-align: middle;
+.button-link {
+  margin: 10px 30px;
 }
 
 .center {
@@ -52,7 +45,7 @@
   display: inline-block;
   font-family: "Sansita Swashed", sans-serif;
   border-bottom: 10px solid #79ffe1;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 30px;
   user-select: none;
   -webkit-user-select: none;

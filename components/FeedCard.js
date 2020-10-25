@@ -42,9 +42,9 @@ export default function FeedCard(props) {
   useEffect(() => {
     if (!isDesktop && window.innerHeight) {
       setHeight({
-        list: window.innerHeight - 280 + "px",
-        spinner: window.innerHeight - 323 + "px",
-        error: window.innerHeight - 323 + "px",
+        list: window.innerHeight - 260 + "px",
+        spinner: window.innerHeight - 303 + "px",
+        error: window.innerHeight - 303 + "px",
       });
     }
   }, []);
