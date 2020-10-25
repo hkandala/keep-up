@@ -3,6 +3,7 @@
   font-family: "Sansita Swashed";
   font-style: normal;
   font-weight: 800;
+  font-display: swap;
   src: url("/public/fonts/sansita-swashed-v1-latin-800.eot");
   src: url("/public/fonts/sansita-swashed-v1-latin-800.eot?#iefix")
       format("embedded-opentype"),
@@ -18,6 +19,7 @@
   font-family: "Roboto Slab";
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.eot");
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.eot?#iefix")
       format("embedded-opentype"),
@@ -36,6 +38,7 @@
   font-family: "Roboto Slab";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot");
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot?#iefix")
       format("embedded-opentype"),
@@ -54,6 +57,7 @@
   font-family: "Roboto Slab";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot");
   src: url("/public/fonts/roboto-slab-v12-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot?#iefix")
       format("embedded-opentype"),
