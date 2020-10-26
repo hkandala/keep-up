@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
       <CssBaseline />
 
       <Link href="/" className="logo">
-        <img src="/favicon-32x32.png" alt="keepup logo" />
+        <img src="/icons/icon-192x192.png" alt="keepup logo" />
       </Link>
 
       <div className="settings-icon" onClick={() => setVisible(true)}>

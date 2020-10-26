@@ -47,6 +47,11 @@
   left: 20px;
 }
 
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+
 .title {
   display: inline-block;
   font-family: "Sansita Swashed", sans-serif;
