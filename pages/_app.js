@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Settings, ExternalLink, Github } from "@geist-ui/react-icons";
+import { Settings, ExternalLink, Github, X } from "@geist-ui/react-icons";
 import {
   GeistProvider,
   CssBaseline,
@@ -8,7 +8,6 @@ import {
   Divider,
   useModal,
   Link,
-  Tooltip,
 } from "@geist-ui/react";
 
 import "../styles/globals.css";
@@ -41,10 +40,12 @@ function MyApp({ Component, pageProps }) {
     <GeistProvider theme={themeType == "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
 
+      <Link href="/" className="logo">
+        <img src="/favicon-32x32.png" alt="keepup logo" />
+      </Link>
+
       <div className="settings-icon" onClick={() => setVisible(true)}>
-        <Tooltip text="Settings" type="dark" placement="bottomEnd">
-          <Settings size={20} />
-        </Tooltip>
+        <Settings size={20} />
       </div>
 
       <Modal {...bindings}>
@@ -74,7 +75,9 @@ function MyApp({ Component, pageProps }) {
             <Github size={20} className="button-link" />
           </Link>
         </Modal.Action>
-        <Modal.Action onClick={() => setVisible(false)}>Close</Modal.Action>
+        <Modal.Action onClick={() => setVisible(false)}>
+          <X />
+        </Modal.Action>
       </Modal>
 
       <Component {...pageProps} />

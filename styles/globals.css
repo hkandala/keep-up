@@ -22,9 +22,15 @@
   font-family: "Roboto Slab", serif !important;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .settings-icon {
   position: absolute;
-  top: 12px;
+  top: 20px;
   right: 0;
   padding: 10px;
   margin: 10px;
@@ -35,17 +41,20 @@
   margin: 10px 30px;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.logo {
+  position: absolute;
+  top: 33px;
+  left: 20px;
 }
 
 .title {
   display: inline-block;
   font-family: "Sansita Swashed", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-top: 25px;
+  margin-bottom: 20px;
   border-bottom: 5px solid #79ffe1;
-  margin: 20px auto;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -73,6 +82,7 @@
 }
 
 .card h4 {
+  font-size: 1.2rem;
   font-weight: 700;
 }
 

@@ -36,15 +36,15 @@ export default function FeedCard(props) {
   const isDesktop = useMediaQuery("md", { match: "up" });
   const [height, setHeight] = useState({
     list: "550px",
-    spinner: "507px",
-    error: "507px",
+    spinner: "500px",
+    error: "500px",
   });
   useEffect(() => {
     if (!isDesktop && window.innerHeight) {
       setHeight({
-        list: window.innerHeight - 187 + "px",
-        spinner: window.innerHeight - 229 + "px",
-        error: window.innerHeight - 229 + "px",
+        list: window.innerHeight - 195 + "px",
+        spinner: window.innerHeight - 240 + "px",
+        error: window.innerHeight - 240 + "px",
       });
     }
   }, []);
