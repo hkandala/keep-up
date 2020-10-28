@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import SimpleBar from "simplebar-react";
 import ClampLines from "react-clamp-lines";
 import { MessageSquare } from "@geist-ui/react-icons";
@@ -66,7 +66,7 @@ export default function FeedCard(props) {
     );
   } else {
     feedContent = items.feedItems.map((item, index) => (
-      <React.Fragment key={index}>
+      <Fragment key={index}>
         <div className="list-item">
           <div className="badge-wrapper">
             <a href={item.url} target="_blank">
@@ -103,7 +103,7 @@ export default function FeedCard(props) {
           )}
         </div>
         {index + 1 < itemCount ? <Divider y={1.5} /> : <></>}
-      </React.Fragment>
+      </Fragment>
     ));
   }
 
