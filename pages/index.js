@@ -65,7 +65,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
-  const host = "https://keepup.hkandala.dev";
+  const host = "https://keep-up.vercel.app";
 
   const hnResponse = await fetch(host + "/api/hackernews");
   const hnApiData = await hnResponse.json();
